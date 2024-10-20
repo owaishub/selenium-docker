@@ -12,7 +12,7 @@ pipeline{
 
         stage('Build Image'){
             steps{
-                sh 'docker build -t=vinsdocker/selenium:latest .'
+                sh 'docker build -t=owaisos/selenium:latest .'
             }
         }
 
@@ -22,9 +22,9 @@ pipeline{
             }
             steps{
                 sh 'echo ${DOCKER_HUB_PSW} | docker login -u ${DOCKER_HUB_USR} --password-stdin'
-                sh 'docker push vinsdocker/selenium:latest'
-                sh "docker tag vinsdocker/selenium:latest vinsdocker/selenium:${env.BUILD_NUMBER}"
-                sh "docker push vinsdocker/selenium:${env.BUILD_NUMBER}"
+                sh 'docker push owaisos/selenium:latest'
+                sh "docker tag owaisos/selenium:latest vinsdocker/selenium:${env.BUILD_NUMBER}"
+                sh "docker push owaisos/selenium:${env.BUILD_NUMBER}"
             }
         }
 
