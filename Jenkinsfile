@@ -23,7 +23,7 @@ pipeline{
             steps{
                 sh 'echo ${DOCKER_HUB_PSW} | docker login -u ${DOCKER_HUB_USR} --password-stdin'
                 sh 'docker push owaisos/selenium:latest'
-                sh "docker tag owaisos/selenium:latest vinsdocker/selenium:${env.BUILD_NUMBER}"
+                sh "docker tag owaisos/selenium:latest owaisos/selenium:${env.BUILD_NUMBER}"
                 sh "docker push owaisos/selenium:${env.BUILD_NUMBER}"
             }
         }
